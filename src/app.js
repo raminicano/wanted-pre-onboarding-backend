@@ -2,6 +2,7 @@ const express = require('express');
 const sequelize = require('./config/db');
 const errorHandler = require('./middlewares/errorHandler');
 const jobRoutes = require('./routes/jobRoutes');
+const applicationRoutes = require('./routes/applicationRoutes');
 
 
 const app = express();
@@ -9,7 +10,8 @@ const app = express();
 app.use(express.json());
 
 // 라우트 연결
-app.use('/api', jobRoutes);
+app.use('/api/jobs', jobRoutes);
+app.use('/api/applications', applicationRoutes);
 
 // 기타 라우트에 대한 처리 (예: 404 Not Found)
 app.use((req, res, next) => {

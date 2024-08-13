@@ -4,14 +4,25 @@ const JobPosting = require('./JobPosting');
 const User = require('./User');
 
 const Application = sequelize.define('Application', {
-    id: {
+    job_posting_id: {
         type: DataTypes.INTEGER,
-        autoIncrement: true,
-        primaryKey: true
+        references: {
+            model: JobPosting,
+            key: 'id'
+        },
+        allowNull: false
+    },
+    user_id: {
+        type: DataTypes.INTEGER,
+        references: {
+            model: User,
+            key: 'id'
+        },
+        allowNull: false
     },
     application_date: {
         type: DataTypes.DATE,
-        defaultValue: DataTypes.NOW
+        defaultValue: DataTypes.NOW,
     }
 }, {
     tableName: 'Application',
