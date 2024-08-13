@@ -9,8 +9,7 @@ wanted-pre-onboarding-backend/
 │
 ├── src/
 │   ├── config/                # 환경설정 파일 (예: DB 설정, 환경 변수 설정)
-│   │   ├── db.js
-│   │   └── env.js
+│   │   └── db.js
 │   │
 │   ├── controllers/           # 각 라우트에 대한 컨트롤러
 │   │   ├── jobController.js
@@ -31,14 +30,11 @@ wanted-pre-onboarding-backend/
 │   │   └── applicationService.js
 │   │
 │   ├── middlewares/           # 미들웨어 (예: 에러 핸들링, 인증)
-│   │   ├── errorHandler.js
-│   │   └── authMiddleware.js
-│   │
-│   ├── utils/                 # 유틸리티 함수 및 헬퍼 함수
-│   │   └── helper.js
+│   │   └── errorHandler.js
 │   │
 │   ├── tests/                 # 유닛 테스트 파일
 │   │   ├── jobController.test.js
+│   │   ├── jobService.test.js
 │   │   └── applicationController.test.js
 │   │
 │   └── app.js              # Express 애플리케이션 초기화
