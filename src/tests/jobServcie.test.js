@@ -36,7 +36,7 @@ describe('Job Service', () => {
 
         const updated = await jobService.updateJobPosting(1, jobData);
         expect(updated).toBe(1);
-        expect(JobPosting.update).toHaveBeenCalledWith(jobData, { where: { id: 1 }, returning: true });
+        expect(JobPosting.update).toHaveBeenCalledWith(jobData, { where: { id: 1 }});
     });
 
     it('should return 0 if job posting does not exist for update', async () => {

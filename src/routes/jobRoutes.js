@@ -6,5 +6,6 @@ const router = express.Router();
 router.post('/jobs', jobController.createJobPosting);          // 채용공고 등록
 router.put('/jobs/:id', jobController.updateJobPosting);       // 채용공고 수정
 router.delete('/jobs/:id', jobController.deleteJobPosting);    // 채용공고 삭제
+router.get('/jobs', jobController.getJobPostings); // 채용공고 목록 가져오기 및 검색
 
 module.exports = router;

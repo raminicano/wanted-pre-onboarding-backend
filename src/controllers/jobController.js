@@ -34,12 +34,13 @@ exports.deleteJobPosting = async (req, res, next) => {
     }
 };
 
-exports.getJobPostings = async (req, res) => {
+exports.getJobPostings = async (req, res, next) => {
     try {
-        const jobs = await jobService.getJobPostings(req.query.search || '');
-        res.json(jobs);
+        const search = req.query.search || '';
+        const jobs = await jobService.getJobPostings(search);
+        res.status(200).json(jobs);
     } catch (error) {
-        res.status(400).json({ error: error.message });
+        next(error);
     }
 };
 
