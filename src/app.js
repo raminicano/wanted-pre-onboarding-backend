@@ -21,14 +21,17 @@ app.use((req, res, next) => {
 // 에러 핸들러 미들웨어 등록
 app.use(errorHandler);
 
-// DB 연결 테스트 및 모델 초기화
+// DB 연결 및 서버 시작
 sequelize.authenticate()
     .then(() => {
         console.log('Connection has been established successfully.');
-        return sequelize.sync(); // force: true는 테이블을 매번 새로 생성, alter: true  // 이 옵션을 사용하면 모델이 변경된 경우에만 테이블을 업데이트
+        return sequelize.sync(); // 테이블 동기화
     })
     .then(() => {
         console.log('Database synchronized');
+        app.listen(3000, () => { // 서버 시작
+            console.log('Server is running on port 3000');
+        });
     })
     .catch(err => {
         console.error('Unable to connect to the database:', err);
