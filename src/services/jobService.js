@@ -14,8 +14,7 @@ exports.createJobPosting = async (data) => {
 
 exports.updateJobPosting = async (jobId, data) => {
     const [updated] = await JobPosting.update(data, {
-        where: { id: jobId },
-        returning: true,
+        where: { id: jobId }
     });
     return updated;
 };

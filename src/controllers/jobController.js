@@ -12,10 +12,11 @@ exports.createJobPosting = async (req, res, next) => {
 exports.updateJobPosting = async (req, res, next) => {
     try {
         const updated = await jobService.updateJobPosting(req.params.id, req.body);
+        console.log(updated);
         if (!updated) {
             return res.status(404).json({ message: "Job posting not found" });
         }
-        res.status(200).json(updated);
+        res.status(200).json({ message: "Job posting updated" });
     } catch (error) {
         next(error);
     }
