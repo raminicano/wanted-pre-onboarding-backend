@@ -76,13 +76,11 @@ wanted-pre-onboarding-backend/
 
 ### 3. 커밋 메시지 예시
 
-- `feat: Add user authentication`
-- `fix: Correct typo in database connection`
-- `refactor: Simplify job posting controller logic`
-- `style: Format code with ESLint`
-- `docs: Update API documentation`
-- `test: Add unit tests for job service`
-- `chore: Configure ESLint and Prettier`
+- `Feat: Add user authentication`
+- `Fix: Correct typo in database connection`
+- `Refactor: Simplify job posting controller logic`
+- `Docs: Update API documentation`
+- `Test: Add unit tests for job service`
 
 ### 4. 커밋 메시지 작성 시 유의사항
 
