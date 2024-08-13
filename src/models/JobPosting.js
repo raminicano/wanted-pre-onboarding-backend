@@ -3,6 +3,11 @@ const sequelize = require('../config/db');
 const Company = require('./Company');
 
 const JobPosting = sequelize.define('JobPosting', {
+    id: {
+        type: DataTypes.INTEGER,
+        autoIncrement: true,
+        primaryKey: true
+    },
     position: {
         type: DataTypes.STRING,
         allowNull: false
@@ -19,6 +24,8 @@ const JobPosting = sequelize.define('JobPosting', {
         type: DataTypes.STRING,
         allowNull: false
     }
+}, {
+    tableName: 'JobPosting'
 });
 
 JobPosting.belongsTo(Company, { foreignKey: 'company_id' });
