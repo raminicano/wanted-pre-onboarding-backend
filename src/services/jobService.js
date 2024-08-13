@@ -58,23 +58,41 @@ exports.getJobPostings = async (search) => {
 };
 
 
-exports.getJobDetail = async (jobId) => {
-    const job = await JobPosting.findOne({
+exports.getJobPostingDetails = async (jobId) => {
+    const jobPosting = await JobPosting.findOne({
         where: { id: jobId },
-        include: [Company],
+        include: [{
+            model: Company,
+            attributes: []
+        }],
+        attributes: [
+            'id',
+            [sequelize.col('Company.name'), 'company_name'],
+            [sequelize.col('Company.country'), 'country'],
+            [sequelize.col('Company.region'), 'region'],
+            'position',
+            'reward',
+            'technology',
+            'description',
+            'company_id'
+        ]
     });
 
-    if (!job) {
-        return null;
+    if (!jobPosting) {
+        throw new Error('Job posting not found');
     }
 
-    const otherJobs = await JobPosting.findAll({
-        where: { company_id: job.company_id, id: { [Op.ne]: jobId } },
-        attributes: ['id'],
+    // 해당 회사의 다른 채용공고 가져오기
+    const otherJobPostings = await JobPosting.findAll({
+        where: {
+            company_id: jobPosting.company_id,
+            id: { [Op.ne]: jobId }  // 현재 jobId를 제외
+        },
+        attributes: ['id']
     });
 
     return {
-        job,
-        otherJobs,
+        ...jobPosting.get(),
+        other_jobs: otherJobPostings.map(job => job.id)
     };
 };

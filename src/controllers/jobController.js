@@ -44,25 +44,11 @@ exports.getJobPostings = async (req, res, next) => {
     }
 };
 
-exports.getJobDetail = async (req, res) => {
+exports.getJobPostingDetails = async (req, res, next) => {
     try {
-        const result = await jobService.getJobDetail(req.params.id);
-        if (!result) {
-            return res.status(404).json({ message: "Job posting not found" });
-        }
-
-        res.json({
-            채용공고_id: result.job.id,
-            회사명: result.job.Company.name,
-            국가: result.job.Company.country,
-            지역: result.job.Company.region,
-            채용포지션: result.job.position,
-            채용보상금: result.job.reward,
-            사용기술: result.job.technology,
-            채용내용: result.job.description,
-            회사가올린다른채용공고: result.otherJobs.map(job => job.id)
-        });
+        const jobDetails = await jobService.getJobPostingDetails(req.params.id);
+        res.status(200).json(jobDetails);
     } catch (error) {
-        res.status(400).json({ error: error.message });
+        next(error);
     }
 };
