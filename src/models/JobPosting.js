@@ -25,7 +25,8 @@ const JobPosting = sequelize.define('JobPosting', {
         allowNull: false
     }
 }, {
-    tableName: 'JobPosting'
+    tableName: 'JobPosting',
+    timestamps: false
 });
 
 JobPosting.belongsTo(Company, { foreignKey: 'company_id' });

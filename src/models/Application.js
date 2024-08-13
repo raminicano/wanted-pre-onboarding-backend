@@ -14,7 +14,8 @@ const Application = sequelize.define('Application', {
         defaultValue: DataTypes.NOW
     }
 }, {
-    tableName: 'Application'
+    tableName: 'Application',
+    timestamps: false
 });
 
 Application.belongsTo(JobPosting, { foreignKey: 'job_posting_id' });

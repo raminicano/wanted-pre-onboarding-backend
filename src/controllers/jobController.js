@@ -1,6 +1,6 @@
 const jobService = require('../services/jobService');
 
-exports.createJobPosting = async (req, res) => {
+exports.createJobPosting = async (req, res, next) => {
     try {
         const job = await jobService.createJobPosting(req.body);
         res.status(201).json(job);
@@ -9,7 +9,7 @@ exports.createJobPosting = async (req, res) => {
     }
 };
 
-exports.updateJobPosting = async (req, res) => {
+exports.updateJobPosting = async (req, res, next) => {
     try {
         const updated = await jobService.updateJobPosting(req.params.id, req.body);
         if (!updated) {
@@ -21,7 +21,7 @@ exports.updateJobPosting = async (req, res) => {
     }
 };
 
-exports.deleteJobPosting = async (req, res) => {
+exports.deleteJobPosting = async (req, res, next) => {
     try {
         const deleted = await jobService.deleteJobPosting(req.params.id);
         if (!deleted) {

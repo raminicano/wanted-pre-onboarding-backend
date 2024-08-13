@@ -20,7 +20,8 @@ const Company = sequelize.define('Company', {
         allowNull: false
     }
 }, {
-    tableName: 'Company' // 테이블 이름을 명시적으로 지정
+    tableName: 'Company',
+    timestamps: false
 });
 
 module.exports = Company;
