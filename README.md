@@ -5,7 +5,7 @@
 ## 디렉토리 구조 설계
 
 ```
-my-express-app/
+wanted-pre-onboarding-backend/
 │
 ├── src/
 │   ├── config/                # 환경설정 파일 (예: DB 설정, 환경 변수 설정)
@@ -41,8 +41,7 @@ my-express-app/
 │   │   ├── jobController.test.js
 │   │   └── applicationController.test.js
 │   │
-│   ├── app.js                 # Express 애플리케이션 초기화
-│   └── server.js              # 서버 실행
+│   └── app.js              # Express 애플리케이션 초기화
 │
 ├── .env                       # 환경 변수 설정 파일
 ├── .gitignore                 # Git에서 제외할 파일들
